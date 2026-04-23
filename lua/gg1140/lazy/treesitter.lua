@@ -21,9 +21,9 @@ return {
             'json',
             'rust',
             'go',
-            'Kotlin', -- unsupported
-            'Java', -- unsupported
-            'Swift', -- unsupported
+            -- 'Kotlin', -- unsupported
+            -- 'Java', -- unsupported
+            -- 'Swift', -- unsupported
             'ruby',
             'query',
             'gitignore',
@@ -62,7 +62,7 @@ return {
 -- 				"gitignore",
 -- 				"go",
 -- 			}
--- 
+--
 -- 			local group = vim.api.nvim_create_augroup("Gg1140Treesitter", { clear = true })
 -- 			vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
 -- 				group = group,
@@ -70,11 +70,11 @@ return {
 -- 					if vim.bo.buftype ~= "" then
 -- 						return
 -- 					end
--- 
+--
 -- 					pcall(vim.treesitter.start, 0)
 -- 				end,
 -- 			})
--- 
+--
 -- 			vim.api.nvim_create_autocmd("User", {
 -- 				group = group,
 -- 				pattern = "VeryLazy",
