@@ -1,3 +1,6 @@
+# Dependencies
+- tree-sitter-cli
+
 # Things I wanted
 - Syntax Highlight 
 - Error Highlight -> mason, mason-lspconfig, nvim-lspconfig
@@ -17,14 +20,14 @@
 ## Languages Configured
 - lua
 - Rust
+- Swift
+- Dart
 
 ## TODO
 - Debug Tools
 - Test Tools
 
 ## Languages To be Added
-- Dart
-- Swift
 - Kotin
 - Ruby
 - Typescript
@@ -32,3 +35,19 @@
 - HTML
 - CSS
 - Markdown
+
+---
+## Useful Keybinds in NeoVim
+```
+<C-i>
+<C-o>
+```
+
+## Useful Commands in NeoVim
+```
+:Lazy
+:Git
+:Git blame
+:Mason
+:checkhealth vim.lsp
+```

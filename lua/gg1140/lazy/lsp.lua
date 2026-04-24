@@ -48,12 +48,12 @@ return {
                     map('n', 'gd', vim.lsp.buf.definition, 'Go to definition')
                     map('n', 'gD', vim.lsp.buf.declaration, 'Go to declaration')
                     map('n', 'gi', vim.lsp.buf.implementation, 'Go to implementation')
-                    map('n', 'r', vim.lsp.buf.references, 'References')
+                    map('n', 'fr', vim.lsp.buf.references, 'References')
                     map('n', '<leader>rn', vim.lsp.buf.rename, 'Rename')
                     map({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, 'Code action')
                     map('n', '<leader>fd', vim.diagnostic.open_float, 'Line diagnostics')
                     map('n', '[d', vim.diagnostic.goto_prev, 'Prev diagnostic')
-                    map('n', ']d', vim.diagnostic.goto_prev, 'Next diagnostic')
+                    map('n', ']d', vim.diagnostic.goto_next, 'Next diagnostic')
                     map('n', '<leader>fws', vim.lsp.buf.workspace_symbol, 'Workspace symbols')
                 end
             })
@@ -92,11 +92,31 @@ return {
                 capabilities = capabilities,
             })
 
+            -- swift
+            vim.lsp.config('sourcekit', {
+                capabilities = capabilities,
+                cmd = {
+                    'xcrun',
+                    'sourcekit-lsp',
+                    '--sdk',
+                    vim.fn.trim(vim.fn.system('xcrun --sdk iphonesimulator --show-sdk-path'))
+                },
+                filetypes = { 'swift' },
+                root_markers = {
+                    'Package.swift',
+                    '*.xcodeproj',
+                    '*.xcworkspace',
+                    'compile_commands.json',
+                    '.git',
+                },
+            })
+
             -- Enable the configs
             vim.lsp.enable('lua_ls')
             vim.lsp.enable('rust_analyzer')
             -- vim.lsp.enable('pyright')
             vim.lsp.enable('ts_ls')
+            vim.lsp.enable('sourcekit')
         end,
     },
     {
@@ -162,6 +182,8 @@ return {
                     lua = { 'stylua' },
                     rust = { 'rustfmt', lsp_format = 'fallback' },
                     javascript = { 'prettierd', 'prettier', stop_after_first = true },
+                    dart = { 'dart_format' },
+                    swift = { 'swift' },
                 },
                 format_on_save = {
                     timeout_ms = 500,
