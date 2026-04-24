@@ -29,3 +29,14 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "100"
+
+-- Still does not work as expected
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+    callback = function()
+        vim.cmd("checktime")
+    end,
+})
+
+-- Allow paste when copied from clipboard, use +y to copy from vim
+vim.opt.clipboard = "unnamedplus"
